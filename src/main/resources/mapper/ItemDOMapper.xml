@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.DXHei.dao.ItemDOMapper">
+  <resultMap id="BaseResultMap" type="com.example.DXHei.entity.DO.ItemDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="acts_name" jdbcType="VARCHAR" property="actsName" />
+    <result column="acts_title" jdbcType="VARCHAR" property="actsTitle" />
+    <result column="acts_img" jdbcType="VARCHAR" property="actsImg" />
+    <result column="acts_price" jdbcType="DECIMAL" property="actsPrice" />
+    <result column="acts_stock" jdbcType="INTEGER" property="actsStock" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.DXHei.entity.DO.ItemDO">
+    <result column="acts_detail" jdbcType="LONGVARCHAR" property="actsDetail" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, acts_name, acts_title, acts_img, acts_price, acts_stock, sales
+  </sql>
+  <sql id="Blob_Column_List">
+    acts_detail
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.DXHei.entity.DO.ItemDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.DXHei.entity.DO.ItemDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from item
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from item
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.DXHei.entity.DO.ItemDOExample">
+    delete from item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    insert into item (id, acts_name, acts_title, 
+      acts_img, acts_price, acts_stock, 
+      sales, acts_detail)
+    values (#{id,jdbcType=BIGINT}, #{actsName,jdbcType=VARCHAR}, #{actsTitle,jdbcType=VARCHAR}, 
+      #{actsImg,jdbcType=VARCHAR}, #{actsPrice,jdbcType=DECIMAL}, #{actsStock,jdbcType=INTEGER}, 
+      #{sales,jdbcType=INTEGER}, #{actsDetail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="actsName != null">
+        acts_name,
+      </if>
+      <if test="actsTitle != null">
+        acts_title,
+      </if>
+      <if test="actsImg != null">
+        acts_img,
+      </if>
+      <if test="actsPrice != null">
+        acts_price,
+      </if>
+      <if test="actsStock != null">
+        acts_stock,
+      </if>
+      <if test="sales != null">
+        sales,
+      </if>
+      <if test="actsDetail != null">
+        acts_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="actsName != null">
+        #{actsName,jdbcType=VARCHAR},
+      </if>
+      <if test="actsTitle != null">
+        #{actsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="actsImg != null">
+        #{actsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="actsPrice != null">
+        #{actsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actsStock != null">
+        #{actsStock,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null">
+        #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="actsDetail != null">
+        #{actsDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.DXHei.entity.DO.ItemDOExample" resultType="java.lang.Long">
+    select count(*) from item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update item
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.actsName != null">
+        acts_name = #{record.actsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actsTitle != null">
+        acts_title = #{record.actsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actsImg != null">
+        acts_img = #{record.actsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actsPrice != null">
+        acts_price = #{record.actsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.actsStock != null">
+        acts_stock = #{record.actsStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.sales != null">
+        sales = #{record.sales,jdbcType=INTEGER},
+      </if>
+      <if test="record.actsDetail != null">
+        acts_detail = #{record.actsDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update item
+    set id = #{record.id,jdbcType=BIGINT},
+      acts_name = #{record.actsName,jdbcType=VARCHAR},
+      acts_title = #{record.actsTitle,jdbcType=VARCHAR},
+      acts_img = #{record.actsImg,jdbcType=VARCHAR},
+      acts_price = #{record.actsPrice,jdbcType=DECIMAL},
+      acts_stock = #{record.actsStock,jdbcType=INTEGER},
+      sales = #{record.sales,jdbcType=INTEGER},
+      acts_detail = #{record.actsDetail,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update item
+    set id = #{record.id,jdbcType=BIGINT},
+      acts_name = #{record.actsName,jdbcType=VARCHAR},
+      acts_title = #{record.actsTitle,jdbcType=VARCHAR},
+      acts_img = #{record.actsImg,jdbcType=VARCHAR},
+      acts_price = #{record.actsPrice,jdbcType=DECIMAL},
+      acts_stock = #{record.actsStock,jdbcType=INTEGER},
+      sales = #{record.sales,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    update item
+    <set>
+      <if test="actsName != null">
+        acts_name = #{actsName,jdbcType=VARCHAR},
+      </if>
+      <if test="actsTitle != null">
+        acts_title = #{actsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="actsImg != null">
+        acts_img = #{actsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="actsPrice != null">
+        acts_price = #{actsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actsStock != null">
+        acts_stock = #{actsStock,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null">
+        sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="actsDetail != null">
+        acts_detail = #{actsDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    update item
+    set acts_name = #{actsName,jdbcType=VARCHAR},
+      acts_title = #{actsTitle,jdbcType=VARCHAR},
+      acts_img = #{actsImg,jdbcType=VARCHAR},
+      acts_price = #{actsPrice,jdbcType=DECIMAL},
+      acts_stock = #{actsStock,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER},
+      acts_detail = #{actsDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    update item
+    set acts_name = #{actsName,jdbcType=VARCHAR},
+      acts_title = #{actsTitle,jdbcType=VARCHAR},
+      acts_img = #{actsImg,jdbcType=VARCHAR},
+      acts_price = #{actsPrice,jdbcType=DECIMAL},
+      acts_stock = #{actsStock,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
