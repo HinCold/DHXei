@@ -4,7 +4,9 @@ import com.example.DXHei.entity.DO.Prompotion;
 import com.example.DXHei.entity.DO.PrompotionExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PrompotionMapper {
     long countByExample(PrompotionExample example);
 

@@ -134,5 +134,16 @@
             <!--关闭默认命名,开启驼峰命名-->
             <property name="useActualColumnNames" value="false" />
         </table>
+        <table tableName="join_record" domainObjectName="JoinRecordDO"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"
+        >
+            <!--关闭默认命名,开启驼峰命名-->
+            <property name="useActualColumnNames" value="false" />
+        </table>
     </context>
 </generatorConfiguration>

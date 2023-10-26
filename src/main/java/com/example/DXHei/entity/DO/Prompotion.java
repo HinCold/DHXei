@@ -16,6 +16,8 @@ public class Prompotion {
 
     private BigDecimal promotionPrice;
 
+    private Date createTime;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +64,13 @@ public class Prompotion {
 
     public void setPromotionPrice(BigDecimal promotionPrice) {
         this.promotionPrice = promotionPrice;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

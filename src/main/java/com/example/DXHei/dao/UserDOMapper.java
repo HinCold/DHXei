@@ -4,9 +4,7 @@ import com.example.DXHei.entity.DO.UserDO;
 import com.example.DXHei.entity.DO.UserDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface UserDOMapper {
     long countByExample(UserDOExample example);
 
