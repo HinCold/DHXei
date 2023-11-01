@@ -4,7 +4,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dxh?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.132.57.52:3306/dxh?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     # hikari连接池配置
@@ -23,6 +23,11 @@ spring:
       max-lifetime: 1800000
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 300000
+  redis:
+    database: 0
+    host: 10.132.57.52
+    port: 6379
+    password: 123456
   devtools:
     # 开启热部署
     restart:
