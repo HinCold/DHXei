@@ -1,6 +1,5 @@
 package com.example.DXHei.controller;
 
-import com.example.DXHei.common.RespondModel;
 import com.example.DXHei.entity.DO.Prompotion;
 import com.example.DXHei.service.PrompotionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import java.util.List;
 public class PrompotionController {
 
     @Autowired
-    PrompotionService prompotionService;
+    private PrompotionService prompotionService;
     @GetMapping("/list")
     public List<Prompotion> listAll() {
         List<Prompotion> prompotions = prompotionService.listPrompotions();

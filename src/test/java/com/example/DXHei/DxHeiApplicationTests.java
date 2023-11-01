@@ -3,16 +3,12 @@ package com.example.DXHei;
 
 import com.example.DXHei.controller.PrompotionController;
 import com.example.DXHei.dao.UserDOMapper;
-import com.example.DXHei.entity.DO.Prompotion;
-import com.example.DXHei.entity.DO.UserDOExample;
-
 import com.example.DXHei.service.PrompotionService;
-import com.example.DXHei.service.impl.PrompotionServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
+import java.util.Date;
 
 @SpringBootTest
 class DxHeiApplicationTests {
@@ -25,10 +21,12 @@ class DxHeiApplicationTests {
 	@Autowired
 	PrompotionController prompotionController;
 
+
 	@Test
 	void contextLoads() {
-
-		System.out.println(prompotionController.listAll().getData());
+		Date date = new Date();
+//		System.out.println(prompotionService.listPrompotions());
+		System.out.println(prompotionController.create("qiangliwu", date, date, 1, "000000"));
 	}
 
 }

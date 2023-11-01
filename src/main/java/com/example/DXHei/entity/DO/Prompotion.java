@@ -73,4 +73,17 @@ public class Prompotion {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "Prompotion{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", itemId=" + itemId +
+                ", promotionPrice=" + promotionPrice +
+                ", createTime=" + createTime +
+                '}';
+    }
 }
