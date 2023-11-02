@@ -114,7 +114,7 @@ public class SerialNumberDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
+        public SerialNumberDOExample andNameEqualTo(String value) {
             addCriterion("name =", value, "name");
             return (Criteria) this;
         }

@@ -44,4 +44,14 @@ public class PrompotionController {
 
         return ret;
     }
+
+    @PostMapping("/join/{inviteKey}")
+    public Long join(@RequestParam("userId") long userId, @PathVariable String inviteKey) {
+        return prompotionService.joinPrompotion(userId, inviteKey);
+    }
+
+    @PostMapping("/list/myjoin")
+    public List<Prompotion> myPrompotion(@RequestParam("userId") long userId) {
+        return prompotionService.listMyParticipate(userId);
+    }
 }

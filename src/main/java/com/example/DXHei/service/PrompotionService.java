@@ -1,7 +1,6 @@
 package com.example.DXHei.service;
 
 import com.example.DXHei.entity.DO.Prompotion;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +12,10 @@ import java.util.List;
 public interface PrompotionService {
 
     List<Prompotion> listPrompotions();
+
+    List<Prompotion> listMyParticipate(long userId);
     Prompotion createPrompotion(Prompotion record, String inviteKey);
+
+    long joinPrompotion(long userId, String inviteKey);
 
 }

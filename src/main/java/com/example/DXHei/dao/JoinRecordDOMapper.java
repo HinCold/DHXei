@@ -2,9 +2,12 @@ package com.example.DXHei.dao;
 
 import com.example.DXHei.entity.DO.JoinRecordDO;
 import com.example.DXHei.entity.DO.JoinRecordDOExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface JoinRecordDOMapper {
     long countByExample(JoinRecordDOExample example);
 

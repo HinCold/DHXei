@@ -7,6 +7,12 @@ public class SerialNumberDO {
 
     private Integer step;
 
+    public SerialNumberDO(String name, Integer value, Integer step) {
+        this.name = name;
+        this.value = value;
+        this.step = step;
+    }
+
     public String getName() {
         return name;
     }

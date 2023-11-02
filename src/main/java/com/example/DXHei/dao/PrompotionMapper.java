@@ -3,6 +3,7 @@ package com.example.DXHei.dao;
 import com.example.DXHei.entity.DO.Prompotion;
 import com.example.DXHei.entity.DO.PrompotionExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface PrompotionMapper {
     int updateByPrimaryKeySelective(Prompotion record);
 
     int updateByPrimaryKey(Prompotion record);
+    @Select("select * from prompotion p join (select id from join_record where id=#{userId}) r on p.id=r.id")
+    List<Prompotion> selectByUid(@Param("userId") long userid);
 }
