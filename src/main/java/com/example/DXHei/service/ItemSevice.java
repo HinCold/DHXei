@@ -8,4 +8,8 @@ import com.example.DXHei.entity.DO.ItemDO;
  */
 public interface ItemSevice {
     ItemDO detail(long itemId);
+
+    long addItem(ItemDO itemDO);
+
+    int addToStock(long itemId);
 }

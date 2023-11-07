@@ -41,7 +41,9 @@ public class PrompotionController {
         prompotion.setItemId(itemId);
 
         Prompotion ret = prompotionService.createPrompotion(prompotion, inviteKey);
+        if (ret != null) {
 
+        }
         return ret;
     }
 

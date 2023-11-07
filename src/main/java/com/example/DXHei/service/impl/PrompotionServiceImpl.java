@@ -47,7 +47,8 @@ public class PrompotionServiceImpl implements PrompotionService {
             System.out.println("code重复");
             return null;
         }
-        int ret = prompotionMapper.insert(record);
+        long ret = prompotionMapper.insert(record);
+        record.setId(ret);
         SerialNumberDO serialNumberDO = new SerialNumberDO(String.valueOf(record.getId()), 0, 1);
 
         serialNumberDOMapper.insert(serialNumberDO);

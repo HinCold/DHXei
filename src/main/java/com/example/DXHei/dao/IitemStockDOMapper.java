@@ -2,9 +2,12 @@ package com.example.DXHei.dao;
 
 import com.example.DXHei.entity.DO.IitemStockDO;
 import com.example.DXHei.entity.DO.IitemStockDOExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface IitemStockDOMapper {
     long countByExample(IitemStockDOExample example);
 

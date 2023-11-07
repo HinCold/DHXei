@@ -3,10 +3,9 @@ package com.example.DXHei.controller;
 import com.example.DXHei.entity.DO.ItemDO;
 import com.example.DXHei.service.ItemSevice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 /**
  * @author XPR
@@ -21,5 +20,20 @@ public class ItemController {
     @GetMapping("/{itemid}")
     public ItemDO getDetail(@PathVariable long itemid) {
         return itemSevice.detail(itemid);
+    }
+
+    @PostMapping("/add")
+    public ItemDO addItem(@RequestParam("name") String name,
+                          @RequestParam("price") BigDecimal price,
+                          @RequestParam("stock") int stock) {
+        ItemDO itemDO = new ItemDO();
+        itemDO.setActsName(name);
+        itemDO.setActsPrice(price);
+        itemDO.setActsStock(stock);
+        itemDO.setSales(0);
+        long iId = itemSevice.addItem(itemDO);
+        itemDO.setId(iId);
+        return itemDO;
+
     }
 }

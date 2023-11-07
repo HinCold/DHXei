@@ -127,11 +127,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.DXHei.entity.DO.ItemDO">
-    insert into item (id, acts_name, acts_title, 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.DXHei.entity.DO.ItemDO">
+    insert into item (acts_name, acts_title,
       acts_img, acts_price, acts_stock, 
       sales, acts_detail)
-    values (#{id,jdbcType=BIGINT}, #{actsName,jdbcType=VARCHAR}, #{actsTitle,jdbcType=VARCHAR}, 
+    values (#{actsName,jdbcType=VARCHAR}, #{actsTitle,jdbcType=VARCHAR},
       #{actsImg,jdbcType=VARCHAR}, #{actsPrice,jdbcType=DECIMAL}, #{actsStock,jdbcType=INTEGER}, 
       #{sales,jdbcType=INTEGER}, #{actsDetail,jdbcType=LONGVARCHAR})
   </insert>
