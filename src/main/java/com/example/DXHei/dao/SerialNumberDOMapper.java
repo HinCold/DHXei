@@ -4,6 +4,7 @@ import com.example.DXHei.entity.DO.SerialNumberDO;
 import com.example.DXHei.entity.DO.SerialNumberDOExample;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface SerialNumberDOMapper {
     int insert(SerialNumberDO record);
 
     int insertSelective(SerialNumberDO record);
-    @Select("select * from serial_number where name=#{id}")
+    @Select("select * from serial_number where name=#{id} for update")
     SerialNumberDO selectByKey(@Param("id") String id);
 
     List<SerialNumberDO> selectByExample(SerialNumberDOExample example);
@@ -26,5 +27,7 @@ public interface SerialNumberDOMapper {
 
     int updateByExample(@Param("record") SerialNumberDO record, @Param("example") SerialNumberDOExample example);
 
-    
+    @Update("update serial_number set value=#{value} where name=#{name}")
+    int updateByPrimaryKey(SerialNumberDO record);
+
 }

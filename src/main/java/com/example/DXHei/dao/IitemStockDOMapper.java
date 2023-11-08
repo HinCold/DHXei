@@ -3,6 +3,7 @@ package com.example.DXHei.dao;
 import com.example.DXHei.entity.DO.IitemStockDO;
 import com.example.DXHei.entity.DO.IitemStockDOExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public interface IitemStockDOMapper {
     List<IitemStockDO> selectByExample(IitemStockDOExample example);
 
     IitemStockDO selectByPrimaryKey(Long id);
+
+    @Update("update item_stock set stock=stock-1 where item_id=#{itemId} and stock>0 and version=#{version}")
+    int decreseStock(IitemStockDO iitemStockDO);
 
     int updateByExampleSelective(@Param("record") IitemStockDO record, @Param("example") IitemStockDOExample example);
 

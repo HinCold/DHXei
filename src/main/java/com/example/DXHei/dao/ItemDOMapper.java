@@ -25,6 +25,8 @@ public interface ItemDOMapper {
 
     ItemDO selectByPrimaryKey(Long id);
 
+
+
     int updateByExampleSelective(@Param("record") ItemDO record, @Param("example") ItemDOExample example);
 
     int updateByExampleWithBLOBs(@Param("record") ItemDO record, @Param("example") ItemDOExample example);
